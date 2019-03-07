@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="锦鲤, swpqianmst@hotmail.com">
+  
+  
+
+  <title>关于最近重做计算机系统的一些感悟 | 猫线3.0</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="日常随笔,linux,windows,如何装系统,">
+  
+
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
+  </script>
+
+  
+    <meta name="description" content="用心创造无聊设计">
+  
+
+  
+    <link rel="alternate" href="/feed" title="猫线3.0" type="application/atom+xml">
+  
+
+  
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/mylogo-192.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+  <script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+    <div id="app">
+
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">猫线3.0 | 专注创造无聊</a>
+      </div>
+    </div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a href="/" target="_self">
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a href="/archives/" target="_self">
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          
+            <a href="/categories/" target="_self">
+              分类
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          
+            <a href="/tags/" target="_self">
+              标签
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          
+            <a href="/friends/" target="_self">
+              友链
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          
+            <a href="/about/" target="_self">
+              关于
+            </a>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
+</div>
+
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
+
+
+      
+
+
+
+
+
+
+
+
+<div class="container post-index">
+
+  
+
+<div class="post">
+  <h1 class="article-title">
+    <span>关于最近重做计算机系统的一些感悟</span>
+  </h1>
+  <div class="article-top-meta">
+    <span>
+      发布 : 
+      2017-08-04
+    </span>
+    
+      <span>
+        分类 : 
+          <a href="/categories/日常随笔/">
+            日常随笔
+          </a>
+      </span>
+    
+    
+  </div>
+
+  
+
+  <div class="article-content">
+    <div class="markdown-body">
+      <p>最近重新制作了自己笔记本上的系统，为了在下次的计算机安装中对自己有所帮助，现将重做系统的过程记录如下。</p>
+<h2 id="一、计算机前置操作"><a href="#一、计算机前置操作" class="headerlink" title="一、计算机前置操作"></a>一、计算机前置操作</h2><hr>
+<p>本次安装的基准系统是由惠普公司出品的EliteBook系列8570W（15inch移动工作站）。作为一台工作站可以说拥有了非常充分的升级空间。内部配置如下</p>
+<ul>
+<li>处理器：Intel® Core™ i7-3720QM CPU @ 2.60GHz</li>
+<li>显卡：NVIDIA Corporation GK107GLM [Quadro K1000M] (rev a1)</li>
+<li>内存：4x4GB</li>
+<li>硬盘：120G SSDx2 320G HDDx1（准备升级1000G HDD）</li>
+<li>屏幕：惠普DC2 16亿色 1080P 15.6英寸</li>
+</ul>
+<h3 id="I-硬盘"><a href="#I-硬盘" class="headerlink" title="I.硬盘"></a>I.硬盘</h3><p>由上边列表可以看出，这台工作站配备了三块硬盘，所以在系统上，我们选择用一块SSD作为视窗操作系统的硬盘，另一颗硬盘则选择elementary OS 0.4.1 Loki操作系统。剩下的HDD作为仓库盘按照视窗操作系统进行配置。</p>
+<p>分区情况如下</p>
+<ul>
+<li>SSD1<ul>
+<li>视窗操作系统 C：/ 120GB</li>
+</ul>
+</li>
+<li>SSD2<ul>
+<li>elementary OS 0.4.1 Loki / 20GB</li>
+<li>elementary OS 0.4.1 Loki /boot 200MB</li>
+<li>elementary OS 0.4.1 Loki /tmp 5GB</li>
+<li>elementary OS 0.4.1 Loki SWAP 2GB</li>
+<li>剩余空间分配给 /home 目录</li>
+</ul>
+</li>
+<li>HDD1<ul>
+<li>视窗操作系统 D：/ 100GB</li>
+<li>视窗操作系统 E：/ 100GB</li>
+<li>视窗操作系统 F：/ 120GB</li>
+</ul>
+</li>
+</ul>
+<p>在使用方面，两个系统中elementary OS 0.4.1 Loki用于日常的笔记，娱乐等用途，而视窗操作系统用于工作，学习等用途。所以留给了视窗系统更大的使用空间。</p>
+<h3 id="II-软件下载"><a href="#II-软件下载" class="headerlink" title="II.软件下载"></a>II.软件下载</h3><p>本次下载了以下软件</p>
+<ul>
+<li>视窗操作系统<ul>
+<li>ADOBE公司 PS</li>
+<li>ADOBE公司 PR</li>
+<li>ADOBE公司 AE</li>
+<li>ADOBE公司 AU</li>
+<li>UISO</li>
+<li>EasyBCD</li>
+<li>Eclipse Neon</li>
+<li>JDK</li>
+<li>CodeBlocks+gcc</li>
+<li>Apple iTunes</li>
+<li>MicroSoft OFFICE</li>
+<li>QQ</li>
+<li>NetEase Music</li>
+</ul>
+</li>
+<li><p>elementary OS 0.4.1 Loki</p>
+<ul>
+<li><p>NetEase Music</p>
+<blockquote>
+<p>dpkg -i netease-cloud-music_1.0.0_i386_ubuntu14.04.deb</p>
+</blockquote>
+</li>
+<li><p>Chrome</p>
+<blockquote>
+<p><a href="http://www.ubuntuchrome.com/" target="_blank" rel="noopener">http://www.ubuntuchrome.com/</a><br>wget -q -O - <a href="https://dl.google.com/linux/linux_signing_key.pub" target="_blank" rel="noopener">https://dl.google.com/linux/linux_signing_key.pub</a> | sudo apt-key add -<br>sudo apt-get update<br>sudo apt-get install google-chrome-stable</p>
+</blockquote>
+</li>
+<li><p>Docky</p>
+<blockquote>
+<p>sudo apt-get install docky</p>
+</blockquote>
+</li>
+<li><p>ShadowSock QT5</p>
+<blockquote>
+<p>sudo add-apt-repository ppa:hzwhuang/ss-qt5<br>sudo apt-get update<br>sudo apt-get install shadowsocks-qt5</p>
+</blockquote>
+</li>
+<li><p>Fcitx</p>
+<blockquote>
+<p>直接配置</p>
+</blockquote>
+</li>
+<li><p>GIMP</p>
+<blockquote>
+<p>直接配置</p>
+</blockquote>
+</li>
+<li><p>Steam</p>
+<blockquote>
+<p>直接配置</p>
+</blockquote>
+</li>
+<li><p>Gedit</p>
+<blockquote>
+<p>直接配置</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="二、安装后"><a href="#二、安装后" class="headerlink" title="二、安装后"></a>二、安装后</h2><hr>
+<h3 id="I-视窗操作系统"><a href="#I-视窗操作系统" class="headerlink" title="I.视窗操作系统"></a>I.视窗操作系统</h3><p>他一定是疯了。你需要费很大的力气删除那些默认软件。呕</p>
+<h3 id="II-elementary-OS-0-4-1-Loki"><a href="#II-elementary-OS-0-4-1-Loki" class="headerlink" title="II.elementary OS 0.4.1 Loki"></a>II.elementary OS 0.4.1 Loki</h3><h4 id="1-使用docky代替原有的plank"><a href="#1-使用docky代替原有的plank" class="headerlink" title="1.使用docky代替原有的plank"></a>1.使用docky代替原有的plank</h4><p>这一步中需要用到config程序来对docky进行修改，同时，config可以让wingpanel显示新的小图标</p>
+<h4 id="2-从gonmelook下载主题。"><a href="#2-从gonmelook下载主题。" class="headerlink" title="2.从gonmelook下载主题。"></a>2.从gonmelook下载主题。</h4><p>我使用了以下主题</p>
+<ul>
+<li>macOS iCons</li>
+<li>Capitaine Cursors</li>
+<li>OSX-Arc-Collection</li>
+<li>Arc-OSX-Icons</li>
+<li>一些简单的修改，让系统很美貌。</li>
+</ul>
+<h4 id="3-修改GRUB2的配置。"><a href="#3-修改GRUB2的配置。" class="headerlink" title="3.修改GRUB2的配置。"></a>3.修改GRUB2的配置。</h4><ul>
+<li>修改 os-release 可以让显示中的内容发生变化。</li>
+<li>主题中的 computer.png 可以让配置中的内容发生变化</li>
+<li>修改 locale/zh_CN/about-plug.mo 可以让显示内容发生变化</li>
+<li>logo 修改 distributor-logo.png。</li>
+<li>后台的ss比较好。</li>
+</ul>
+<h2 id="三、一些点"><a href="#三、一些点" class="headerlink" title="三、一些点"></a>三、一些点</h2><hr>
+<ul>
+<li>我使用视窗的METRO引导LINUX</li>
+<li>视窗的PS比GIMP好用。</li>
+</ul>
+<hr>
+<p><strong>注：在现在的使用中，本文提到的计算机已经被替换，系统更改为Solus 3.。（也没准是深度，Liri，pop或者Maui）</strong></p>
+<blockquote>
+<p>本文章最初写作时间 2017/8/4 20:37:00</p>
+</blockquote>
+    </div>
+  </div>
+  
+    <div class="copy-right">
+      <div class="markdown-body">
+        <blockquote>
+        
+        
+          本文作者 : 锦鲤 <br>
+        
+        原文链接 : <a href="">http://www.nekolines.com/passages/关于最近重做计算机系统的一些感悟/</a><br>
+        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </blockquote>
+      </div>
+    </div>
+  
+  
+  
+    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="qzone, qq, weibo, wechat, douban">
+  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
+</div>
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
+  
+
+  
+    <div id="reward">
+  
+    <p id="reward-meta">我很可爱，请给我钱</p>
+  
+  <button id="reward-btn">
+    
+    <span>打算投食？</span>
+  </button>
+  <div id="reward-qrcode">
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
+    
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
+  
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+      <span>
+        
+          <i class="iconfont icon-06tags"></i>标签: 
+          
+          <span class="span--tag">
+            <a href="/tags/linux/">
+              #linux
+            </a>
+          </span>
+          
+          <span class="span--tag">
+            <a href="/tags/windows/">
+              #windows
+            </a>
+          </span>
+          
+          <span class="span--tag">
+            <a href="/tags/如何装系统/">
+              #如何装系统
+            </a>
+          </span>
+          
+        
+      </span>
+    </div>
+    <div class="article-meta pull-right">
+    </div>
+  </div>
+</div>
+
+
+  <aside id="sidebar">
+    <p id="sidebar-header"></p>
+    <ol id="sidebar-toc"></ol>
+  </aside>
+  <script async>setTimeout(generateToc, 10);</script>
+
+
+  <nav class="post-navigation">
+    
+      <div class="nav-pre">
+        <i class="iconfont icon-prev"></i>
+        上一篇:
+        <a href="/passages/网站内部文章编写标准/" target="_self">网站内部文章编写标准</a>
+      </div>
+    
+    
+      <div class="nav-next">
+        下一篇:
+        <a href="/passages/网站维护20180228A/" target="_self">网站维护20180228A</a>
+        <i class="iconfont icon-next"></i>
+      </div>
+    
+  </nav>
+
+   
+
+   
+
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
+    <br>
+    </p><p id="hitokoto">:D 获取中...</p>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+  <p></p>
+</footer>
+
+
+<script src="https://v1.hitokoto.cn/?encode=js&c=d&select=%23hitokoto" defer></script>
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2016, 1, 26).getTime();
+
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
+
+
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
+</div>
+
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
+</script>
+
+    </div>
+
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  </body>
+
+</html>

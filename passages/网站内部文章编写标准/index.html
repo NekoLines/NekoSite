@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="锦鲤, swpqianmst@hotmail.com">
+  
+  
+
+  <title>网站内部文章编写标准 | 猫线3.0</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="维护日志,使用参考,标准,">
+  
+
+  <script>
+    console.log('\n%c Hexo-theme-bmw v4.0 ' + '%c 🎉 https://github.com/dongyuanxin/theme-bmw 🎉\n' + '\n%c View demo online ' + '%c 🔍 https://godbmw.com/ 🔍  \n' , 'color: #fadfa3; background: #030307; padding:3px 0;', '', 'color: #fadfa3; background: #030307; padding:3px 0;', '');
+  </script>
+
+  
+    <meta name="description" content="用心创造无聊设计">
+  
+
+  
+    <link rel="alternate" href="/feed" title="猫线3.0" type="application/atom+xml">
+  
+
+  
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="apple-touch-icon" href="/images/mylogo-192.png">
+  
+
+  <link href="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+<link rel="stylesheet" href="/icon/iconfont.css">
+<link rel="stylesheet" href="/css/github-markdown.css">
+<link rel="stylesheet" href="/css/highlight.css">
+
+  <script src="/js/util.js"></script>
+<script src="/js/valine.min.js"></script>
+
+  
+
+  
+    <link href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js" async></script>
+  
+
+  
+    <link href="https://cdn.bootcss.com/social-share.js/1.0.16/css/share.min.css" rel="stylesheet">
+  
+
+  <script src="//cdn.bootcss.com/jquery/3.3.1/jquery.min.js" async></script>
+
+  
+
+</head>
+
+
+  <body>
+
+    
+
+    <div id="app">
+
+      <div class="header-wrap">
+  <header>
+    <div class="site-brand">
+      <div class="site-title">
+        <a href="/">猫线3.0 | 专注创造无聊</a>
+      </div>
+    </div>
+    <nav class="site-navigation">
+      <ul class="nav-menu">
+      
+        <li class="nav-item" data-path="/">
+          
+            <a href="/" target="_self">
+              主页
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/archives/">
+          
+            <a href="/archives/" target="_self">
+              归档
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/categories/">
+          
+            <a href="/categories/" target="_self">
+              分类
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/tags/">
+          
+            <a href="/tags/" target="_self">
+              标签
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/friends/">
+          
+            <a href="/friends/" target="_self">
+              友链
+            </a>
+          
+        </li>
+      
+        <li class="nav-item" data-path="/about/">
+          
+            <a href="/about/" target="_self">
+              关于
+            </a>
+          
+        </li>
+      
+      </ul>
+    </nav>
+    <i class="iconfont icon-menu"></i>
+  </header>
+</div>
+
+<script>
+  let links = document.querySelectorAll('.nav-item');
+  for(let link of links){
+    let childrenLink = link.querySelector('ul');
+    link.addEventListener('mouseenter', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown active";
+      }
+    })
+    link.addEventListener('mouseleave', () => {
+      if(childrenLink) {
+        childrenLink.className = "nav-menu--dropdown";
+      }
+    })
+  }
+  let rootRealPath = getRealPath(window.location.pathname, true);
+  for(let link of links) {
+    let linkPath = link.getAttribute("data-path");
+    if(linkPath && getRealPath(linkPath, true) === rootRealPath) {
+      link.className = "nav-item hover";
+    }
+  }
+
+  let iconMenu = document.querySelector("i.iconfont.icon-menu"),
+    iconMenuClicked = false;
+  let navDOM = document.querySelector("nav.site-navigation");
+  iconMenu.addEventListener("click", () => {
+    iconMenuClicked
+      ? navDOM.className = "site-navigation active"
+      : navDOM.className = "site-navigation";
+    iconMenuClicked = !iconMenuClicked;
+  })
+</script>
+
+
+      
+
+
+
+
+
+
+
+
+<div class="container post-index">
+
+  
+
+<div class="post">
+  <h1 class="article-title">
+    <span>网站内部文章编写标准</span>
+  </h1>
+  <div class="article-top-meta">
+    <span>
+      发布 : 
+      2017-05-14
+    </span>
+    
+      <span>
+        分类 : 
+          <a href="/categories/维护日志/">
+            维护日志
+          </a>
+      </span>
+    
+    
+  </div>
+
+  
+
+  <div class="article-content">
+    <div class="markdown-body">
+      <h2 id="一-编写目的"><a href="#一-编写目的" class="headerlink" title="一 编写目的"></a>一 编写目的</h2><p>本文章编写的目的在于，标准化网站内部文章标准，为后期文章编写提供简明扼要的参考依据。同时，良好的文章编写习惯有利于网站后期的维护和更新，也有利于文章的阅读。</p>
+<p>本文章会持续的更新，填充，修改。故本文章发布日期始终保持最终版本的日期，且本文章不设置旧版文章备份。</p>
+<h2 id="二-撰写文章时的规定"><a href="#二-撰写文章时的规定" class="headerlink" title="二 撰写文章时的规定"></a>二 撰写文章时的规定</h2><h3 id="一-标题"><a href="#一-标题" class="headerlink" title="(一) 标题"></a>(一) 标题</h3><hr>
+<p>文章的标题目前主要分为三种，以下单独设定标准。</p>
+<h4 id="1-网站更新类"><a href="#1-网站更新类" class="headerlink" title="1. 网站更新类"></a>1. 网站更新类</h4><p>本类标题主要用于网站更新和一些日志类文章，本类文章标题统一为</p>
+<p><strong>网站维护 20000101A</strong></p>
+<p>即 网站维护 年月日 第几次更新 （A-Z用完后顺延AA）。</p>
+<h4 id="2-课程笔记类"><a href="#2-课程笔记类" class="headerlink" title="2. 课程笔记类"></a>2. 课程笔记类</h4><p>本类标题主要用于上课或生活中出现的笔记类文章，本类文章标题统一为</p>
+<p><strong>2000/01/01 范例课程笔记</strong></p>
+<p>即 年/月/日 笔记内部内容 笔记。如果出现了一类课程在当日出现多次的情况，则在最后加入 A-Z 进行区分。</p>
+<h4 id="3-日常随笔类"><a href="#3-日常随笔类" class="headerlink" title="3. 日常随笔类"></a>3. 日常随笔类</h4><p>本类标题适用性最广，日常除上述类型文章外所有文章都遵循本类文章标题内容。本类文章的格式不做较多限制。但是一般的格式为：</p>
+<p><strong>文章类型——补充</strong></p>
+<h3 id="二-链接"><a href="#二-链接" class="headerlink" title="(二) 链接"></a>(二) 链接</h3><hr>
+<p>链接部分直接使用拼音即可，特殊类文章可以使用英语。</p>
+<h3 id="三-发布日期"><a href="#三-发布日期" class="headerlink" title="(三) 发布日期"></a>(三) 发布日期</h3><hr>
+<p>除了特殊类型文章以外，所有文章发布日期都请保持最初日期。</p>
+<h3 id="四-分类"><a href="#四-分类" class="headerlink" title="(四) 分类"></a>(四) 分类</h3><hr>
+<p>所有文章都应该有一个特定分类。若一类文章出现次数超过五次，并且此类文章都具有统一的格式和内容。则应该为此类文章建立特殊的分类。</p>
+<h3 id="五-标签"><a href="#五-标签" class="headerlink" title="(五) 标签"></a>(五) 标签</h3><hr>
+<p>所有文章都应该有至少一个标签。标签的内容则是文章内部的关键词。对于系统更新日志类文章可以采用统一的标签类型。</p>
+<h3 id="六-公开度"><a href="#六-公开度" class="headerlink" title="(六) 公开度"></a>(六) 公开度</h3><hr>
+<p>一般文章均采取公开，需要保护内容的文章采用密码保护，内部维护文章采用隐藏。</p>
+<h3 id="七-自定义字段"><a href="#七-自定义字段" class="headerlink" title="(七) 自定义字段"></a>(七) 自定义字段</h3><hr>
+<p>一般情况下请不要填写自定义字段。</p>
+<h2 id="三-文章内部的规定"><a href="#三-文章内部的规定" class="headerlink" title="三 文章内部的规定"></a>三 文章内部的规定</h2><h3 id="一-文章层级"><a href="#一-文章层级" class="headerlink" title="(一) 文章层级"></a>(一) 文章层级</h3><hr>
+<h2 id="一-一级标题序号：一、二、三"><a href="#一-一级标题序号：一、二、三" class="headerlink" title="一 一级标题序号：一、二、三"></a>一 一级标题序号：一、二、三</h2><h3 id="一-二级标题序号-如：-一-二-三"><a href="#一-二级标题序号-如：-一-二-三" class="headerlink" title="(一) 二级标题序号 如：(一)(二)(三)"></a>(一) 二级标题序号 如：(一)(二)(三)</h3><hr>
+<h4 id="1-三级标题序号-如：1-2-3"><a href="#1-三级标题序号-如：1-2-3" class="headerlink" title="1. 三级标题序号 如：1.2.3."></a>1. 三级标题序号 如：1.2.3.</h4><h5 id="1-四级标题序号-如：-1-2-3"><a href="#1-四级标题序号-如：-1-2-3" class="headerlink" title="(1) 四级标题序号 如：(1)(2)(3)"></a>(1) 四级标题序号 如：(1)(2)(3)</h5><h6 id="①-五级标题序号-如：①②③"><a href="#①-五级标题序号-如：①②③" class="headerlink" title="① 五级标题序号 如：①②③"></a>① 五级标题序号 如：①②③</h6><h3 id="二-文章正文"><a href="#二-文章正文" class="headerlink" title="(二) 文章正文"></a>(二) 文章正文</h3><hr>
+<p>直接书写即可，每段之间使用回车分割。首行缩进使用两个全角空格。</p>
+<h3 id="三-引用框"><a href="#三-引用框" class="headerlink" title="(三) 引用框"></a>(三) 引用框</h3><hr>
+<p>可以用来标注引用内容，或者用于针对某项事物的补充</p>
+<blockquote>
+<p>引用文字</p>
+</blockquote>
+<h3 id="四-代码"><a href="#四-代码" class="headerlink" title="(四) 代码"></a>(四) 代码</h3><hr>
+<p>所有代码需要使用代码框包裹，并注释语言。</p>
+<pre><code>请输入代码
+</code></pre><h3 id="五-分割线"><a href="#五-分割线" class="headerlink" title="(五) 分割线"></a>(五) 分割线</h3><hr>
+<p>所有文章都需要具备一条文章内部的摘要分割线。</p>
+<h2 id="四-本文章LOG"><a href="#四-本文章LOG" class="headerlink" title="四 本文章LOG"></a>四 本文章LOG</h2><p>2017/5/14 首次编写</p>
+    </div>
+  </div>
+  
+    <div class="copy-right">
+      <div class="markdown-body">
+        <blockquote>
+        
+        
+          本文作者 : 锦鲤 <br>
+        
+        原文链接 : <a href="">http://www.nekolines.com/passages/网站内部文章编写标准/</a><br>
+        版权声明 : 本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！
+        </blockquote>
+      </div>
+    </div>
+  
+  
+  
+    <div class="social-share" style="margin-top: -2rem" data-wechat-qrcode-title="<p>微信扫一扫</p>" data-wechat-qrcode-helper="<p>微信右上角, 扫一扫分享</p>" data-sites="qzone, qq, weibo, wechat, douban">
+  <span style="color: #6b7487; font-size: 1.4rem;">分享到: </span>
+</div>
+<script src="https://cdn.bootcss.com/social-share.js/1.0.16/js/social-share.min.js" async></script>
+  
+
+  
+    <div id="reward">
+  
+    <p id="reward-meta">我很可爱，请给我钱</p>
+  
+  <button id="reward-btn">
+    
+    <span>打算投食？</span>
+  </button>
+  <div id="reward-qrcode">
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/wechat.png" alt="微信扫一扫, 向我投食">
+        <p class="qrcode-meta">微信扫一扫, 向我投食</p>
+      </div>
+    
+      <div class="reward-qrcode--container">
+        <img class="qrcode-img" src="/images/alipay.png" alt="支付宝扫一扫, 向我投食">
+        <p class="qrcode-meta">支付宝扫一扫, 向我投食</p>
+      </div>
+    
+  </div>
+
+</div>
+
+<script>
+  (() => {
+    let button = document.querySelector('#reward-btn'),
+      qrcode = document.querySelector('#reward-qrcode'),
+      display = false;
+    
+    button.addEventListener('click', () => {
+      qrcode.style.display = display ? 'none' : 'block'
+      display = !display
+    }, false)
+  })()
+</script>
+  
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+      <span>
+        
+          <i class="iconfont icon-06tags"></i>标签: 
+          
+          <span class="span--tag">
+            <a href="/tags/使用参考/">
+              #使用参考
+            </a>
+          </span>
+          
+          <span class="span--tag">
+            <a href="/tags/标准/">
+              #标准
+            </a>
+          </span>
+          
+        
+      </span>
+    </div>
+    <div class="article-meta pull-right">
+    </div>
+  </div>
+</div>
+
+
+  <aside id="sidebar">
+    <p id="sidebar-header"></p>
+    <ol id="sidebar-toc"></ol>
+  </aside>
+  <script async>setTimeout(generateToc, 10);</script>
+
+
+  <nav class="post-navigation">
+    
+      <div class="nav-pre">
+        <i class="iconfont icon-prev"></i>
+        上一篇:
+        <a href="/passages/建立之初的一点初心/" target="_self">建立之初的一点初心</a>
+      </div>
+    
+    
+      <div class="nav-next">
+        下一篇:
+        <a href="/passages/关于最近重做计算机系统的一些感悟/" target="_self">关于最近重做计算机系统的一些感悟</a>
+        <i class="iconfont icon-next"></i>
+      </div>
+    
+  </nav>
+
+   
+
+   
+
+</div>
+
+
+      <footer>
+  <p class="site-info">
+    博客已萌萌哒运行<span id="time-to-now"></span><span class="my-face">(●'◡'●)ﾉ♥</span>
+    <br>
+    </p><p id="hitokoto">:D 获取中...</p>
+    Theme - <a href="https://github.com/dongyuanxin/theme-bmw">BMW</a> | Made With 💗 | Powered by <a href="https://godbmw.com/">GodBMW</a>
+    <br>
+    
+  <p></p>
+</footer>
+
+
+<script src="https://v1.hitokoto.cn/?encode=js&c=d&select=%23hitokoto" defer></script>
+<script>
+const timeToNowDOM = document.querySelector("#time-to-now");
+const startTimestamp = new Date(2016, 1, 26).getTime();
+
+const updateTimeStr = () => {
+  let offset = parseInt(
+      (new Date().getTime() - startTimestamp) / 1000,
+      10
+    ),
+    day = Math.floor(offset / 86400),
+    hour = Math.floor((offset % 86400) / 3600),
+    minute = Math.floor(((offset % 86400) % 3600) / 60),
+    second = Math.floor(((offset % 86400) % 3600) % 60);
+  timeToNowDOM.innerHTML =
+    day + "天" + hour + "小时" + minute + "分钟" + second + "秒";
+  setTimeout(updateTimeStr, 500);
+}
+
+setTimeout(updateTimeStr, 500);
+</script>
+
+
+      <div class="back-to-top hidden">
+  <span>
+    <i class="iconfont icon-60"></i><span></span>%
+  </span>
+</div>
+
+<script>
+const updateIconToTop = percent => {
+  let dom = document.querySelector(".back-to-top span span");
+  dom.innerText = percent;
+  if(percent < 1) {
+    document.querySelector(".back-to-top").className = "back-to-top hidden";
+  } else {
+    document.querySelector(".back-to-top").className = "back-to-top";
+  }
+}
+
+const handleScoll = () => {
+  let isRunning = false;
+  return () => {
+    if (isRunning) return;
+    isRunning = true;
+    window.requestAnimationFrame(timestamp => {
+      let scrollTop =
+          document.documentElement.scrollTop || document.body.scrollTop,
+        scrollHeight =
+          document.documentElement.scrollHeight ||
+          document.body.scrollHeight,
+        clientHeight =
+          document.documentElement.clientHeight ||
+          document.body.clientHeight;
+      isRunning = false;
+      if (scrollTop <= 1) {
+        updateIconToTop(0);
+        return;
+      }
+      if (scrollTop + clientHeight >= scrollHeight) {
+        updateIconToTop(100);
+      } else {
+        updateIconToTop(parseInt(
+          100 * scrollTop / (scrollHeight - clientHeight),
+          10
+        ));
+      }
+    });
+  };
+}
+
+const backToTop = () => {
+  let scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop,
+    delay = 10,
+    time = 200;
+  if (scrollTop <= 20) {
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    return;
+  }
+  let step = Math.ceil(scrollTop * delay / time);
+  let timer = setInterval(() => {
+    scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop - step <= 0) {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      clearInterval(timer);
+    } else {
+      document.documentElement.scrollTop = scrollTop - step;
+      document.body.scrollTop = scrollTop - step;
+    }
+  }, delay);
+}
+
+document.addEventListener("scroll", handleScoll(), false);
+
+document.querySelector(".back-to-top").addEventListener("click", backToTop, false);
+
+</script>
+
+    </div>
+
+    
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+<script>
+  (() => {
+    const mathjaxConfig = {
+      showProcessingMessages: false, //关闭js加载过程信息
+      messageStyle: "none", //不显示信息
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]], //行内公式选择符
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]], //段内公式选择符
+        skipTags: ["script", "noscript", "style", "textarea", "pre", "code", "a"] //避开某些标签
+      },
+      "HTML-CSS": {
+        availableFonts: ["STIX", "TeX"], //可选字体
+        showMathMenu: false //关闭右击菜单显示
+      }
+    }
+
+    let mathjaxInterval = setInterval(() => {
+      if(!window.MathJax){
+        return;
+      }
+      window.MathJax.Hub.Config(mathjaxConfig)
+      window.MathJax.Hub.Queue(["Typeset", MathJax.Hub, document.getElementById('app')])
+
+      clearInterval(mathjaxInterval)
+    }, 10)    
+  })()
+</script>
+    
+
+    <script src="https://cdn.bootcss.com/fancybox/3.5.2/jquery.fancybox.min.js" async></script>
+<script async>
+  let fancyTimer = setInterval(function(){
+    if(!window.$){
+      return;
+    }
+    $(document).ready(function() {
+      $(".post img").each(function () {
+        if($(this).parent().get(0).tagName.toLowerCase() === "a") {
+          return;
+        }
+        // $(this).attr("data-fancybox", "gallery"); // if you add 'data-fancybox', img will display after showed
+        var element = document.createElement("a");
+        $(element).attr("data-fancybox", "gallery");
+        $(element).attr("href", $(this).attr("src"));
+        $(this).wrap(element);
+      });
+      
+      clearInterval(fancyTimer);
+    });
+  }, 10);
+</script>
+
+    
+  </body>
+
+</html>
